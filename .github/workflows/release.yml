@@ -1,0 +1,20 @@
+name: 'Create Release Pipeline'
+
+on:
+  #Uncomment these lines when in the official repo
+  # push:
+  #   branches:
+  #     - 'main'
+  workflow_dispatch:
+    inputs:
+      github_sha:
+        description: 'GitHub SHA of Commit'
+        required: true
+
+jobs:
+  create_release_pipeline:
+    name: 'Create Release Pipeline'
+    uses: philips-internal/emr-devops-actions/.github/workflows/reusable_create_release.yml@develop
+    with:
+      github_sha: ${{ inputs.github_sha }}
+    secrets: inherit

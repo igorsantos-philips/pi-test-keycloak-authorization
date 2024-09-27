@@ -1,0 +1,15 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+#Ignore camel cache folders
+.camel-jbang
+
+#Ignore ide folders
+.vscode
+
+bin
+/distribution/tmp
+*.jar

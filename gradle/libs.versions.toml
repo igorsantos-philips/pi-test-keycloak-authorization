@@ -1,0 +1,75 @@
+[versions]
+camel = "4.8.0"
+tie = "1.0.15"
+jackson = "2.17.1"
+log4j = "2.23.1"
+telemetry = "1.31.0"
+
+[libraries]
+camel-bom = { group = "org.apache.camel", name = "camel-bom", version.ref = "camel" }
+camel-main = { group = "org.apache.camel", name = "camel-main", version.ref = "camel" }
+camel-health = { group = "org.apache.camel", name = "camel-health", version.ref = "camel" }
+camel-opentelemetry = { group = "org.apache.camel", name = "camel-opentelemetry", version.ref = "camel" }
+camel-debug = { group = "org.apache.camel", name = "camel-debug", version.ref = "camel" }
+camel-test = { group = "org.apache.camel", name = "camel-test-junit5", version.ref = "camel" }
+camel-jackson = { group = "org.apache.camel", name = "camel-jackson", version.ref = "camel" }
+camel-netty-http = { group = "org.apache.camel", name = "camel-netty-http", version.ref = "camel" }
+camel-javascript = { group = "org.apache.camel", name = "camel-javascript", version.ref = "camel" }
+camel-ftp = { group = "org.apache.camel", name = "camel-ftp", version.ref = "camel" }
+camel-http = { group = "org.apache.camel", name = "camel-http", version.ref = "camel" }
+camel-jetty = { group = "org.apache.camel", name = "camel-jetty", version.ref = "camel" }
+camel-netty = { group = "org.apache.camel", name = "camel-netty", version.ref = "camel" }
+camel-spring = { group = "org.apache.camel", name = "camel-spring", version.ref = "camel" }
+camel-mllp = { group = "org.apache.camel", name = "camel-mllp", version.ref = "camel" }
+camel-cxf-soap = { group = "org.apache.camel", name = "camel-cxf-soap", version.ref = "camel" }
+camel-cxf-rest = { group = "org.apache.camel", name = "camel-cxf-rest", version.ref = "camel" }
+camel-crypto = { group = "org.apache.camel", name = "camel-crypto", version.ref = "camel" }
+camel-xmlsecurity = { group = "org.apache.camel", name = "camel-xmlsecurity", version.ref = "camel" }
+camel-zipfile = { group = "org.apache.camel", name = "camel-zipfile", version.ref = "camel" }
+camel-base64 = { group = "org.apache.camel", name = "camel-base64", version.ref = "camel" }
+camel-fhir = { group = "org.apache.camel", name = "camel-fhir", version.ref = "camel" }
+camel-redis = { group = "org.apache.camel", name = "camel-redis", version.ref = "camel" }
+camel-hl7 = { group = "org.apache.camel", name = "camel-hl7", version.ref = "camel" }
+camel-kafka = { group = "org.apache.camel", name = "camel-kafka", version.ref = "camel" }
+camel-rest = { group = "org.apache.camel", name = "camel-rest", version.ref = "camel" }
+camel-sql = { group = "org.apache.camel", name = "camel-sql", version.ref = "camel" }
+camel-jpa = { group = "org.apache.camel", name = "camel-jpa", version.ref = "camel" }
+
+camel-aws2-s3 = { group = "org.apache.camel", name = "camel-aws2-s3", version.ref = "camel" }
+
+tie-commons = { group = "com.philips.tie", name = "tie-commons", version.ref = "tie" }
+tie-router = { group = "com.philips.tie", name = "tie-router", version.ref = "tie" }
+tie-logger = { group = "com.philips.tie", name = "tie-logger", version.ref = "tie" }
+tie-test = { group = "com.philips.tie", name = "tie-test", version.ref = "tie" }
+tie-jsonjson = { group = "com.philips.tie", name = "tie-jsonjson", version.ref = "tie" }
+tie-jsonhl7 = { group = "com.philips.tie", name = "tie-jsonhl7", version.ref = "tie" }
+tie-hl7xml = { group = "com.philips.tie", name = "tie-hl7xml", version.ref = "tie" }
+tie-hl7json = { group = "com.philips.tie", name = "tie-hl7json", version.ref = "tie" }
+tie-files = { group = "com.philips.tie", name = "tie-files", version.ref = "tie" }
+tie-datamapping = { group = "com.philips.tie", name = "tie-datamapping", version.ref = "tie" }
+tie-mapping = { group = "com.philips.tie", name = "tie-mapping", version.ref = "tie" }
+tie-cxf = { group = "com.philips.tie", name = "tie-cxf", version.ref = "tie" }
+tie-marker = { group = "com.philips.tie", name = "tie-marker", version.ref = "tie" }
+tie-audit = { group = "com.philips.tie", name = "tie-audit", version.ref = "tie" }
+tie-netty = { group = "com.philips.tie", name = "tie-netty", version.ref = "tie" }
+tie-templates = { group = "com.philips.tie", name = "tie-templates", version.ref = "tie" }
+tie-xslt = { group = "com.philips.tie", name = "tie-xslt", version.ref = "tie" }
+tie-tasyconnector = { group = "com.philips.tie", name = "tie-tasyconnector", version.ref = "tie" }
+tie-healthcheck = { group = "com.philips.tie", name = "tie-healthcheck", version.ref = "tie" }
+
+opentelemetry-javaagent = { group = "io.opentelemetry.javaagent", name = "opentelemetry-javaagent", version.ref = "telemetry" }
+jackson-datatype = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-jsr310", version.ref = "jackson" }
+
+log4j-api = { group = "org.apache.logging.log4j", name = "log4j-api", version.ref = "log4j" }
+log4j-slf4j2-impl = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl", version.ref = "log4j" }
+log4j-core = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "log4j" }
+
+[bundles]
+core = ["camel-bom", "camel-main", "camel-health", "camel-opentelemetry", "camel-debug", "camel-test", "camel-jackson", "camel-netty-http",
+    "camel-javascript", "camel-jetty", "camel-ftp", "camel-mllp", "camel-base64", "jackson-datatype", "opentelemetry-javaagent",
+    "camel-crypto", "camel-cxf-soap", "camel-cxf-rest", "camel-fhir", "camel-hl7", "camel-http", "camel-kafka", "camel-netty", "camel-redis",
+    "camel-spring", "camel-xmlsecurity", "camel-zipfile", "camel-jpa", "camel-rest", "camel-sql", "camel-aws2-s3"]
+tie = ["tie-commons", "tie-router", "tie-logger", "tie-jsonjson", "tie-jsonhl7", "tie-hl7xml", "tie-hl7json", "tie-files", "tie-datamapping", "tie-mapping",
+    "tie-marker", "tie-cxf", "tie-audit", "tie-netty", "tie-templates", "tie-xslt", "tie-tasyconnector", "tie-healthcheck"]
+log = ["log4j-api", "log4j-slf4j2-impl", "log4j-core"]
+test = ["camel-test", "tie-test"]

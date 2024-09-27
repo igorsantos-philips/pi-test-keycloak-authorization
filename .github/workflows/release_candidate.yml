@@ -1,0 +1,29 @@
+name: Create Release Candidate Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      git_head:
+        description: 'Source branch of new version'
+        required: false
+        default: 'develop'
+        type: string
+      ref_type:
+        description: 'Type of Ref. [Branch | Tag]'
+        required: false
+        default: branch
+        type: string
+      next_version:
+        description: 'New Version in format (<Major>.<Minor>.<Patch>)'
+        required: false
+        type: string
+jobs:
+  release-candidate:
+    name: 'Create Release Candidate Pipeline'
+    uses: philips-internal/emr-devops-actions/.github/workflows/reusable_github_create_multiple_release_candidate.yml@develop
+    with:
+      next_version: '${{ inputs.next_version }}'
+      git_head: '${{ inputs.git_head }}'
+      ref_type: '${{ inputs.ref_type }}'
+      runner: 'philips-code-hub'
+    secrets: inherit

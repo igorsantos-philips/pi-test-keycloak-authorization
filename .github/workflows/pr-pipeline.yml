@@ -1,0 +1,15 @@
+name: Automatic - PR Pipeline
+
+run-name: PR- Pipeline `${{ github.ref_name }}` branch
+
+on:
+  #Uncomment these lines when in the official repo
+  # pull_request:
+  #   branches: [main, develop]
+  #   paths-ignore:
+  #     - '**.md'
+
+jobs:
+  pr-pipeline:
+    uses: philips-internal/emr-devops-actions/.github/workflows/pr-pipeline.yml@develop
+    secrets: inherit

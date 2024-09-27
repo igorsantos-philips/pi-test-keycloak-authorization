@@ -1,0 +1,88 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'application'
+    id 'maven-publish'
+    id 'dev.jbang' version '0.2.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+apply plugin : "java" 
+
+mainClassName = "com.philips.integrations.Application" 
+
+group = 'com.philips.integrations'
+
+java.sourceCompatibility = JavaVersion.VERSION_21
+java.targetCompatibility = JavaVersion.VERSION_21
+
+distZip.enabled = false
+distTar.enabled = false
+
+repositories {
+
+    mavenLocal()    
+    mavenCentral()
+    gradlePluginPortal()
+    maven {
+        name 'nexus-releases'
+        url "http://repo.portal.whebdc.com.br/content/repositories/releases/"
+        allowInsecureProtocol = true
+    }
+
+}
+
+dependencies {
+	
+    implementation libs.bundles.core
+    implementation libs.bundles.tie
+    implementation libs.bundles.log
+    
+    testImplementation libs.bundles.test
+	
+}
+
+shadowJar {
+    zip64 true
+
+    exclude('application.properties')
+    exclude('log4j2.properties') 
+
+    mergeServiceFiles()
+
+    archiveFileName = rootProject.name + '.jar'
+}
+
+task prepareImage(type: Copy) {
+    dependsOn shadowJar
+    from shadowJar.archivePath
+    into 'distribution/docker'
+    doFirst {
+        fileTree('distribution/docker').matching {
+            include rootProject.name + '.jar'
+        }.forEach { file ->
+            file.delete()
+        }
+    }
+    doLast {
+        println "Docker image ready to be generated on folder distribution/docker"        
+    }
+}
+
+task generateImage(type: Exec) {
+    dependsOn prepareImage
+    commandLine 'docker', 'build', '-t', rootProject.name, 'distribution/docker'
+    doLast {
+        println "Docker image generated successfully"
+    }
+}
+
+tasks.named('jar', Jar) {
+    dependsOn prepareImage
+}
+
+tasks.named('startShadowScripts', CreateStartScripts) {
+    dependsOn jar
+}
+
+

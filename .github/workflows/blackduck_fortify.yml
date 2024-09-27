@@ -1,0 +1,39 @@
+name: Manual - Fortify/BlackDuck Scan
+
+run-name: Scanning `${{ github.ref_name }}` branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      blackduck:
+        description: blackduck
+        default: false
+        required: true
+        type: boolean
+      fortify:
+        description: fortify
+        default: false
+        required: true
+        type: boolean
+
+jobs:
+  blackduck:
+    uses: philips-internal/emr-devops-actions/.github/workflows/reusable_blackduck_gradle_scan.yml@develop
+    if: ${{ inputs.blackduck }}
+    with:
+      repository_name: <version_name>
+      repository_url: ${{ github.repository }}
+      branch: ${{ github.ref_name }}
+      project_name: EMR-CM<PROJECT_NAME>
+      java_version: 17
+    secrets: inherit
+  fortify:
+    uses: philips-internal/emr-devops-actions/.github/workflows/reusable_fortify_gradle_scan.yml@develop
+    if: ${{ inputs.fortify }}
+    with:
+      repository_name: <version_name>
+      repository_url: ${{ github.repository }}
+      branch: ${{ github.ref_name }}
+      application: EMR-CM<APPLICATION_NAME>
+      java_version: 17
+    secrets: inherit

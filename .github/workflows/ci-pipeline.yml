@@ -1,0 +1,16 @@
+name: Automatic - PR Pipeline
+
+run-name: CI - Pipeline `${{ github.ref_name }}` branch
+
+on:
+  #Uncomment these lines when in the official repo
+  # push:
+  #   branches: [main, develop]
+  #   paths-ignore:
+  #     - '**.md'
+  workflow_dispatch:
+
+jobs:
+  ci-pipeline:
+    uses: philips-internal/emr-devops-actions/.github/workflows/pr-pipeline.yml@develop
+    secrets: inherit

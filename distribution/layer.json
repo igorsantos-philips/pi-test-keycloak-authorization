@@ -1,0 +1,224 @@
+{
+    "name": "<changeme integration-template>",
+    "description": "<changeme Integration template>",
+    "version": "PARAM_VERSION",
+    "category": "APP_INT",
+    "status": "ENABLED",
+    "item": {
+        "type": "APP_INT",
+        "image": "<changeme image location>",
+        "tag": "PARAM_TAG",
+        "diskSize": "0",
+        "memory": "512m",
+        "stack": "",
+        "envs": [
+            {
+                "name": "router.host",
+                "description": "Define the Rabbitmq hostname or IP address connection.",
+                "type": "TEXT",
+                "order": 1,
+                "show": true,
+                "mandatory": true                
+            },
+            {
+                "name": "router.port",
+                "description": "Define the Rabbitmq port number connection.",
+                "type": "NUMBER",
+                "order": 2,
+                "show": true,
+                "mandatory": true,
+                "defaultValue": "5671"
+            },
+            {
+                "name": "router.username",
+                "description": "Define the Rabbitmq username connection.",
+                "type": "TEXT",
+                "order": 3,
+                "show": true,
+                "mandatory": true
+            },            
+            {
+                "name": "router.password",
+                "description": "Define the Rabbitmq password connection.",
+                "type": "PASSWORD",
+                "order": 4,
+                "show": true,
+                "mandatory": true                
+            },
+            {
+                "name": "router.secure",
+                "description": "Define if the connection protocol with Rabbitmq is secure (AMQPS).",
+                "type": "TOGGLE",
+                "order": 5,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "true"
+            }, 
+            {
+                "name": "router.virtualhost",
+                "description": "Define a virtual host for Rabbitmq.",
+                "type": "TEXT",
+                "order": 6,
+                "show": true,
+                "mandatory": false
+            }, 
+            {
+                "name": "router.recovery-auto",
+                "description": "Define if the integration will auto recovery from connection loss with Rabbitmq.",
+                "type": "TOGGLE",
+                "order": 7,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "true"
+            }, 
+            {
+                "name": "router.recovery-interval",
+                "description": "Define the recovery time to the Rabbitmq connection in milliseconds.",
+                "type": "NUMBER",
+                "order": 8,
+                "show": true,
+                "mandatory": false
+            }, 
+            {
+                "name": "router.addresses",
+                "description": "When Rabbitmq is acting in high availability mode, many addresses can be defined instead of just one host name or ip address. Separate the addresses by comma.",
+                "type": "TEXT",
+                "order": 9,
+                "show": true,
+                "mandatory": false
+            },
+            {
+                "name": "tasy.connector.enabled",
+                "description": "Enable Tasy Connector endpoint.",
+                "type": "TOGGLE",
+                "order": 10,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "true"
+            },
+            {
+                "name": "tasy.connector.protocol",
+                "description": "Protocol to access Tasy Connector endpoint.",
+                "type": "TEXT",
+                "order": 11,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "http"
+            },
+            {
+                "name": "tasy.connector.port",
+                "description": "Port to access Tasy Connector endpoint.",
+                "type": "NUMBER",
+                "order": 12,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "9090"
+            },
+            {
+                "name": "tasy.connector.path",
+                "description": "Path to access Tasy Connector endpoint.",
+                "type": "TEXT",
+                "order": 13,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "tasy"
+            },
+            {
+                "name": "tasy.connector.ssl.file",
+                "description": "SSL key file path if protocol is set to https.",
+                "type": "TEXT",
+                "order": 14,
+                "show": true,
+                "mandatory": false
+            },
+            {
+                "name": "tasy.connector.ssl.password",
+                "description": "SSL password if protocol is set to https.",
+                "type": "TEXT",
+                "order": 15,
+                "show": true,
+                "mandatory": false
+            },
+            {
+                "name": "healthcheck.enabled",
+                "description": "",
+                "type": "TOGGLE",
+                "order": 16,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "true"
+            }, 
+            {
+                "name": "healthcheck.protocol",
+                "description": "",
+                "type": "TEXT",
+                "order": 17,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "http"
+            }, 
+            {
+                "name": "healthcheck.port",
+                "description": "",
+                "type": "NUMBER",
+                "order": 18,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "9090"
+            }, 
+            {
+                "name": "healthcheck.path",
+                "description": "",
+                "type": "TEXT",
+                "order": 19,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "health"
+            }, 
+            {
+                "name": "healthcheck.consumers.sync",
+                "description": "",
+                "type": "NUMBER",
+                "order": 20,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "1"
+            }, 
+            {
+                "name": "healthcheck.consumers.async",
+                "description": "",
+                "type": "NUMBER",
+                "order": 21,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "1"
+            },
+            {
+                "name": "healthcheck.timeout",
+                "description": "",
+                "type": "NUMBER",
+                "order": 22,
+                "show": true,
+                "mandatory": false,
+                "defaultValue": "10000"
+            }, 
+            {
+                "name": "healthcheck.ssl.file",
+                "description": "",
+                "type": "TEXT",
+                "order": 23,
+                "show": true,
+                "mandatory": false
+            }, 
+            {
+                "name": "healthcheck.ssl.password",
+                "description": "",
+                "type": "PASSWORD",
+                "order": 24,
+                "show": true,
+                "mandatory": false
+            }
+        ],
+        "accessPort": 9090
+    }
+}
