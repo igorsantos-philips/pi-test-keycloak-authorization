@@ -1,4 +1,4 @@
-package com.philips.integrations.rename_the_package;
+package com.philips.integrations.pitestkeycloak;
 
 import com.philips.tie.commons.router.IntegrationRouteBuilder;
 

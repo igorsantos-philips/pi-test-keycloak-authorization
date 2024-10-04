@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.apache.camel.builder.RouteBuilder;
 import org.junit.jupiter.api.Test;
 
+import com.philips.integrations.pitestkeycloak.ExampleRoute;
 import com.philips.tie.tests.IntegrationTestSupport;
 
 /**

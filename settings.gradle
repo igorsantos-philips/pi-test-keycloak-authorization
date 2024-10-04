@@ -1,2 +1,2 @@
 //CHANGE to the name of your integration
-rootProject.name = 'integration-template'
+rootProject.name = 'pi-test-keycloak-authorization'
