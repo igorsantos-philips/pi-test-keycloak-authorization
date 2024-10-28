@@ -14,17 +14,15 @@ import org.apache.camel.Exchange;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.philips.integrations.pitestkeycloak.model.EncryptioStringEntity;
 import com.philips.integrations.pitestkeycloak.model.EncryptionUtils;
-import com.philips.tie.commons.Configs;
 import com.philips.tie.commons.router.IntegrationRouteBuilder;
 
 public class StringEncriptorConnector extends IntegrationRouteBuilder {
     private final ObjectMapper om = new ObjectMapper();
     @Override
     public void configure() throws Exception {
-
-        Configs.addKeystore(getCamelContext(), "key_example", "classpath:key_example.jks", "bifrost");
+        // changeTrustHttpComponent();
+        // Configs.addKeystore(getCamelContext(), "key_example", "classpath:key_example.jks", "bifrost");
         // from("netty-http:https://0.0.0.0:{{integrationname.connector.port:9000}}/{{integrationname.connector.path.encrypt}}?ssl=true&sslContextParameters=#key_example")
         from("netty-http:http://0.0.0.0:{{integrationname.connector.port:9000}}/{{integrationname.connector.path.encrypt}}?ssl=false")
                 .id("endpoint-encryptor")
@@ -35,8 +33,33 @@ public class StringEncriptorConnector extends IntegrationRouteBuilder {
         String decryptedString = om.readTree(bodyRequest).get("decryptedString").asText();
         String secretKey = om.readTree(bodyRequest).get("secretKey").asText();
         String encryptedString = EncryptionUtils.encryptString(decryptedString,secretKey);
-        EncryptioStringEntity encryptioStringEntity = new EncryptioStringEntity(secretKey, decryptedString, encryptedString);
-        String messageResponse = om.writeValueAsString(encryptioStringEntity);
+        String messageResponse = om.createObjectNode().put("encryptedString", encryptedString).toString();
         exchange.getMessage().setBody(messageResponse);
     }
+    //     private void changeTrustHttpComponent() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    //     TrustManagersParameters trustManagersParameters = new TrustManagersParameters();
+        
+    //     trustManagersParameters.setTrustManager(new X509TrustManager() {
+    //         @Override
+    //         public X509Certificate[] getAcceptedIssuers() { return null; }
+
+    //         @Override
+    //         public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+
+    //         @Override
+    //         public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+    //     });
+        
+    //     SSLContextParameters sslContextParameters = new SSLContextParameters();
+    //     sslContextParameters.setTrustManagers(trustManagersParameters);                         
+
+    //     HttpComponent httpComponent = getCamelContext().getComponent("https", HttpComponent.class);
+    //     httpComponent.setX509HostnameVerifier(new NoopHostnameVerifier());
+    //     httpComponent.setSslContextParameters(sslContextParameters);
+
+    //     // NettyHttpComponent nettyHttpComponent = getCamelContext().getComponent("netty-http", NettyHttpComponent.class);
+    //     // nettyHttpComponent.setX509HostnameVerifier(new NoopHostnameVerifier());
+    //     // nettyHttpComponent.setSslContextParameters(sslContextParameters);
+    // }
+
 }

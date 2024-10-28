@@ -37,6 +37,7 @@ dependencies {
     implementation libs.bundles.core
     implementation libs.bundles.tie
     implementation libs.bundles.log
+    implementation libs.bundles.keycloak
     
     testImplementation libs.bundles.test
 	

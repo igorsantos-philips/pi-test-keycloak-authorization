@@ -3,7 +3,7 @@ package com.philips.integrations.pitestkeycloak;
 import com.philips.tie.commons.router.IntegrationRouteBuilder;
 
 public class ExampleRoute extends IntegrationRouteBuilder {
-
+    
     @Override
     public void configure() throws Exception {                        
         

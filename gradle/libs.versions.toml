@@ -4,6 +4,7 @@ tie = "1.0.15"
 jackson = "2.17.1"
 log4j = "2.23.1"
 telemetry = "1.31.0"
+auth0 = "4.4.0"
 
 [libraries]
 camel-bom = { group = "org.apache.camel", name = "camel-bom", version.ref = "camel" }
@@ -34,6 +35,8 @@ camel-kafka = { group = "org.apache.camel", name = "camel-kafka", version.ref = 
 camel-rest = { group = "org.apache.camel", name = "camel-rest", version.ref = "camel" }
 camel-sql = { group = "org.apache.camel", name = "camel-sql", version.ref = "camel" }
 camel-jpa = { group = "org.apache.camel", name = "camel-jpa", version.ref = "camel" }
+camel-jsonpath = { group = "org.apache.camel", name = "camel-jsonpath", version.ref = "camel" }
+camel-core-languages = { group = "org.apache.camel", name = "camel-core-languages", version.ref = "camel" }
 
 camel-aws2-s3 = { group = "org.apache.camel", name = "camel-aws2-s3", version.ref = "camel" }
 
@@ -64,12 +67,17 @@ log4j-api = { group = "org.apache.logging.log4j", name = "log4j-api", version.re
 log4j-slf4j2-impl = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl", version.ref = "log4j" }
 log4j-core = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "log4j" }
 
+java-jwt = { group = "com.auth0", name = "java-jwt", version.ref = "auth0" }
+
+
+
 [bundles]
 core = ["camel-bom", "camel-main", "camel-health", "camel-opentelemetry", "camel-debug", "camel-test", "camel-jackson", "camel-netty-http",
     "camel-javascript", "camel-jetty", "camel-ftp", "camel-mllp", "camel-base64", "jackson-datatype", "opentelemetry-javaagent",
     "camel-crypto", "camel-cxf-soap", "camel-cxf-rest", "camel-fhir", "camel-hl7", "camel-http", "camel-kafka", "camel-netty", "camel-redis",
-    "camel-spring", "camel-xmlsecurity", "camel-zipfile", "camel-jpa", "camel-rest", "camel-sql", "camel-aws2-s3"]
+    "camel-spring", "camel-xmlsecurity", "camel-zipfile", "camel-jpa", "camel-rest", "camel-sql", "camel-aws2-s3", "camel-jsonpath", "camel-core-languages"]
 tie = ["tie-commons", "tie-router", "tie-logger", "tie-jsonjson", "tie-jsonhl7", "tie-hl7xml", "tie-hl7json", "tie-files", "tie-datamapping", "tie-mapping",
     "tie-marker", "tie-cxf", "tie-audit", "tie-netty", "tie-templates", "tie-xslt", "tie-tasyconnector", "tie-healthcheck"]
 log = ["log4j-api", "log4j-slf4j2-impl", "log4j-core"]
 test = ["camel-test", "tie-test"]
+keycloak = ["java-jwt"]
